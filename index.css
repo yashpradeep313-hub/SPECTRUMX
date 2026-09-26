@@ -1,0 +1,94 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  /* Brand Theme Colors */
+  .bg-navy-900 {
+    background-color: #0f172a;
+  }
+  .bg-dashboard-gray {
+    background-color: #f8fafc;
+  }
+
+  /* Split-Screen Navy Grid Pattern */
+  .navy-grid-bg {
+    background-color: #0f172a;
+    background-image: 
+      linear-gradient(to right, rgba(6, 182, 212, 0.08) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(16, 185, 129, 0.08) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+
+  /* Studious Academic Background (fine drafting graph/grid paper on warm parchment) */
+  .studious-bg {
+    background-color: #f8fafc;
+    background-image: 
+      radial-gradient(#d5d7dc 0.85px, transparent 0.85px),
+      radial-gradient(#e4e6ea 0.85px, #f8fafc 0.85px);
+    background-size: 24px 24px;
+    background-position: 0 0, 12px 12px;
+  }
+
+  .studious-grid {
+    background-size: 20px 20px;
+    background-image: 
+      linear-gradient(to right, rgba(203, 213, 225, 0.35) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(203, 213, 225, 0.35) 1px, transparent 1px);
+  }
+
+  /* Academic Ruled Line */
+  .academic-border {
+    border-color: rgba(226, 232, 240, 0.85);
+  }
+
+  /* Light Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #f1f5f9;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 9999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+  }
+}
+
+@keyframes neonSpin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.neon-loader-ring {
+  width: 64px;
+  height: 64px;
+  border-radius: 9999px;
+  border: 4px solid rgba(6, 182, 212, 0.2);
+  border-top-color: #10b981;
+  border-right-color: #06b6d4;
+  box-shadow: 0 0 25px rgba(16, 185, 129, 0.5), inset 0 0 15px rgba(6, 182, 212, 0.3);
+  animation: neonSpin 0.9s cubic-bezier(0.55, 0.15, 0.45, 0.85) infinite;
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 14px rgba(16, 185, 129, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 28px rgba(6, 182, 212, 0.6);
+  }
+}
+
+.glow-neon {
+  animation: pulseGlow 2.5s infinite ease-in-out;
+}
+

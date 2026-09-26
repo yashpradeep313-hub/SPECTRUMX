@@ -1,0 +1,8 @@
+{
+  "name": "Synapse AI - Adaptive Personalized Learning Platform",
+  "description": "AI-powered adaptive learning platform that diagnoses student knowledge gaps, maps prerequisite dependencies, dynamically tailors learning paths, and adjusts assessment difficulty in real-time.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

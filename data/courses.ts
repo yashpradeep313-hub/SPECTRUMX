@@ -1,0 +1,58 @@
+/**
+ * @license
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+import { CourseMetadata } from '../types';
+
+export const AVAILABLE_COURSES: CourseMetadata[] = [
+  {
+    id: 'python-core',
+    title: 'Python Programming & Internals',
+    category: 'Computer Science',
+    tagline: 'Visible, explainable root-cause diagnosis across 14 prerequisite concepts.',
+    icon: 'Terminal',
+    badge: 'Flagship DAG',
+    nodeCount: 14,
+    estimatedHours: 12,
+    difficulty: 'Intermediate',
+    tags: ['BKT Engine', 'Root-Cause DAG', 'Python Sandbox', 'Interactive Traversal'],
+    isFlagship: true
+  },
+  {
+    id: 'dsa-python',
+    title: 'Data Structures & Algorithms',
+    category: 'Computer Science',
+    tagline: 'Deconstruct recursion stacks, binary search trees, and dynamic programming memoization.',
+    icon: 'Binary',
+    badge: 'Algorithms',
+    nodeCount: 7,
+    estimatedHours: 16,
+    difficulty: 'Advanced',
+    tags: ['Big-O', 'Recursion', 'BST Invariants', 'DP Memoization']
+  },
+  {
+    id: 'fullstack-web',
+    title: 'Modern Full-Stack & Async JS',
+    category: 'Web Engineering',
+    tagline: 'Deep dive into event loop microtasks, React fiber reconciliation, and stale closures.',
+    icon: 'Layers',
+    badge: 'Web Systems',
+    nodeCount: 5,
+    estimatedHours: 10,
+    difficulty: 'Intermediate',
+    tags: ['Event Loop', 'Microtasks', 'React Hooks', 'SWR Caching']
+  },
+  {
+    id: 'deep-learning-math',
+    title: 'Neural Networks & Deep Learning Math',
+    category: 'Artificial Intelligence',
+    tagline: 'Connect linear algebra, partial derivatives, loss landscapes, and backpropagation.',
+    icon: 'BrainCircuit',
+    badge: 'AI & Math',
+    nodeCount: 4,
+    estimatedHours: 14,
+    difficulty: 'Advanced',
+    tags: ['Matrix Ops', 'Chain Rule', 'Gradient Descent', 'Backprop']
+  }
+];

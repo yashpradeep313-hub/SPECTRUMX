@@ -1,0 +1,93 @@
+{
+  "entities": {
+    "users": {
+      "title": "User",
+      "description": "Student and instructor profile records including adaptive proficiency levels and study metrics.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "email": { "type": "string" },
+        "avatar": { "type": "string" },
+        "role": { "type": "string", "enum": ["Student", "Instructor", "Admin"] },
+        "level": { "type": "string", "enum": ["Beginner", "Intermediate", "Advanced"] },
+        "currentGoal": { "type": "string" },
+        "streakDays": { "type": "number" },
+        "totalStudyMinutes": { "type": "number" },
+        "learningVelocity": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "name", "role", "level"]
+    },
+    "courses": {
+      "title": "Course Domain",
+      "description": "Student-created or preset subject domains with DAG prerequisite modules.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "category": { "type": "string" },
+        "tagline": { "type": "string" },
+        "nodeCount": { "type": "number" },
+        "estimatedHours": { "type": "number" },
+        "difficulty": { "type": "string" },
+        "tags": { "type": "array", "items": { "type": "string" } },
+        "chapters": { "type": "array" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "title"]
+    },
+    "syllabi": {
+      "title": "Syllabus Document",
+      "description": "Parsed curriculum PDF data with exam paper patterns, weightages, and diagnostic test items.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "fileName": { "type": "string" },
+        "courseTitle": { "type": "string" },
+        "academicYear": { "type": "string" },
+        "paperPattern": { "type": "string" },
+        "totalMarks": { "type": "number" },
+        "chapters": { "type": "array" },
+        "initialDiagnosticTest": { "type": "array" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "courseTitle"]
+    },
+    "pyqs": {
+      "title": "Previous Year Question Paper",
+      "description": "Uploaded PYQ question papers with marking schemes, point deduction criteria, and extracted questions.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "fileName": { "type": "string" },
+        "examTitle": { "type": "string" },
+        "year": { "type": "string" },
+        "totalMarks": { "type": "number" },
+        "markingScheme": { "type": "string" },
+        "questions": { "type": "array" },
+        "highWeightageTopics": { "type": "array", "items": { "type": "string" } },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "examTitle", "year"]
+    },
+    "assessments": {
+      "title": "Assessment Result",
+      "description": "Diagnostic and adaptive quiz assessment results with IRT theta parameters and proficiency calibration.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "syllabusId": { "type": "string" },
+        "score": { "type": "number" },
+        "total": { "type": "number" },
+        "percentage": { "type": "number" },
+        "level": { "type": "string", "enum": ["Beginner", "Intermediate", "Advanced"] },
+        "suggestedTheta": { "type": "string" },
+        "recommendedFocus": { "type": "array", "items": { "type": "string" } },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "score", "total", "level"]
+    }
+  }
+}

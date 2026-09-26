@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SpectrumX - Adaptive Personalized Learning Platform</title>
+    <meta name="description" content="SpectrumX is an AI-powered adaptive learning platform that diagnoses student knowledge gaps, maps prerequisite dependencies, dynamically tailors learning paths, and adjusts assessment difficulty in real-time." />
+    <meta property="og:title" content="SpectrumX - Adaptive Personalized Learning Platform" />
+    <meta property="og:description" content="SpectrumX AI-powered personalized learning platform that analyzes student performance, identifies knowledge gaps, and dynamically adapts the learning path and assessment difficulty." />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;0,6..72,700;1,6..72,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+              serif: ['"Newsreader"', '"Fraunces"', 'serif'],
+              mono: ['"JetBrains Mono"', 'monospace'],
+            },
+            colors: {
+              brand: {
+                50: '#eef2ff',
+                100: '#e0e7ff',
+                200: '#c7d2fe',
+                300: '#a5b4fc',
+                400: '#818cf8',
+                500: '#6366f1',
+                600: '#4f46e5',
+                700: '#4338ca',
+                800: '#3730a3',
+                900: '#312e81',
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <link rel="stylesheet" href="/index.css">
+  </head>
+  <body class="bg-[#FAF9F5] text-slate-800 antialiased selection:bg-amber-500 selection:text-white font-sans min-h-screen">
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>
