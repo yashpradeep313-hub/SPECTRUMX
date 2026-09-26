@@ -200,7 +200,7 @@ export const CourseCatalogView: React.FC<CourseCatalogViewProps> = ({
               {/* Action Button */}
               <div className="pt-4 border-t border-stone-100 flex items-center justify-between gap-3">
                 <span className="text-xs text-slate-500">
-                  {course.id === 'python-core' ? '⭐ Recommended for Hackathon Demo' : 'Full Adaptive Curriculum'}
+                  {course.id === 'python-core' ? '⭐ Recommended Track' : 'Full Adaptive Curriculum'}
                 </span>
 
                 <button
@@ -228,7 +228,7 @@ export const CourseCatalogView: React.FC<CourseCatalogViewProps> = ({
               <Sparkles className="w-4 h-4" />
             </span>
             <h3 className="text-lg font-bold text-slate-900 font-serif">
-              Need a Custom Subject for Your University or Hackathon Domain?
+              Need a Custom Subject for Your University Course?
             </h3>
           </div>
           <p className="text-xs sm:text-sm text-slate-600 max-w-2xl leading-relaxed">

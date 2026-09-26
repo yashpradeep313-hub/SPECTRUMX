@@ -45,10 +45,8 @@ import { KnowledgeGraphView } from './components/KnowledgeGraphView';
 import { ExplainabilityCard } from './components/ExplainabilityCard';
 import { ActiveQuestionCard } from './components/ActiveQuestionCard';
 import { MicroLessonDrawer } from './components/MicroLessonDrawer';
-import { DemoWalkthroughBar } from './components/DemoWalkthroughBar';
 import { StudentDashboard } from './components/StudentDashboard';
 import { AiTutorDrawer } from './components/AiTutorDrawer';
-import { HackathonPitchModal } from './components/HackathonPitchModal';
 import { AuthModal, PRESET_USERS } from './components/AuthModal';
 import { ProfileModal } from './components/ProfileModal';
 import { CourseSelectModal } from './components/CourseSelectModal';
@@ -207,7 +205,6 @@ export const App: React.FC = () => {
   const [aiTutorMisconception, setAiTutorMisconception] = useState<string | undefined>();
 
   // Modals state
-  const [isPitchModalOpen, setIsPitchModalOpen] = useState<boolean>(false);
   const [isProfileModalOpen, setIsProfileModalOpen] = useState<boolean>(false);
   const [isCourseSelectOpen, setIsCourseSelectOpen] = useState<boolean>(false);
   const [isCustomTopicModalOpen, setIsCustomTopicModalOpen] = useState<boolean>(false);
@@ -734,7 +731,7 @@ export const App: React.FC = () => {
                 </div>
                 <div>
                   <div className="font-extrabold text-base tracking-tight text-slate-900 font-serif leading-tight">
-                    SpectrumX
+                    Spectrum X
                   </div>
                   <div className="text-[10px] font-mono font-bold tracking-wider text-cyan-600 uppercase">
                     Adaptive Study Desk
@@ -925,15 +922,6 @@ export const App: React.FC = () => {
 
           {/* Bottom Sidebar: Current Persona & Switch Student Button */}
           <div className="p-3 border-t border-stone-200/90 bg-stone-50/70 space-y-2">
-            {/* Judge Pitch Kit Pill */}
-            <button
-              onClick={() => setIsPitchModalOpen(true)}
-              className="w-full flex items-center justify-center gap-2 py-2 px-3 rounded-xl bg-amber-50 hover:bg-amber-100 border border-amber-200 text-amber-900 text-xs font-semibold transition-all shadow-xs cursor-pointer"
-            >
-              <Award className="w-3.5 h-3.5 text-amber-700" />
-              <span>3-Min Judge Pitch Kit</span>
-            </button>
-
             {/* Standalone Pure HTML template link */}
             <a
               href="/standalone-demo.html"
@@ -995,7 +983,7 @@ export const App: React.FC = () => {
               <div className="w-8 h-8 rounded-lg bg-[#0f172a] flex items-center justify-center">
                 <Brain className="w-4 h-4 text-emerald-400" />
               </div>
-              <span className="font-extrabold text-slate-900 font-serif">SpectrumX</span>
+              <span className="font-extrabold text-slate-900 font-serif">Spectrum X</span>
             </div>
             <button
               onClick={() => setIsMobileSidebarOpen(false)}
@@ -1161,20 +1149,10 @@ export const App: React.FC = () => {
 
           {/* Generous Padding Main Content Area with Light Gray Background */}
           <main className="flex-1 p-4 sm:p-6 lg:p-8 space-y-6 max-w-7xl w-full mx-auto">
-            {/* VIEW 1: DASHBOARD (Adaptive Studio, Walkthrough bar, Active Question, Explainability, Evolving Profile) */}
+            {/* VIEW 1: DASHBOARD (Adaptive Studio, Active Question, Explainability, Evolving Profile) */}
             {activeView === 'dashboard' && (
               <div className="space-y-6 animate-in fade-in duration-300">
-                {/* 1. Demo Persona & 3-Minute Walkthrough Controller */}
-                <DemoWalkthroughBar
-                  activePersonaId={activePersonaId}
-                  onSelectPersona={handleSelectPersona}
-                  onRunAutoDemoStep={handleRunAutoDemoStep}
-                  currentDemoStep={demoStep}
-                  isAutoRunning={isAutoRunning}
-                  onResetDemo={() => handleSelectPersona(DEMO_PERSONAS[0])}
-                />
-
-                {/* 2. Explainable Personalization Card ("Why Am I Seeing This?") */}
+                {/* Explainable Personalization Card ("Why Am I Seeing This?") */}
                 {explainabilityContext && (
                   <ExplainabilityCard
                     context={explainabilityContext}
@@ -1427,7 +1405,7 @@ export const App: React.FC = () => {
           <footer className="border-t border-stone-200 bg-white py-6 text-xs text-slate-500 mt-auto">
             <div className="max-w-7xl mx-auto px-4 sm:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
               <div className="flex items-center gap-2">
-                <span className="font-extrabold text-slate-900 font-serif">SpectrumX</span>
+                <span className="font-extrabold text-slate-900 font-serif">Spectrum X</span>
                 <span>•</span>
                 <span className="italic text-slate-600">
                   “Diagnosing why you fail, not just what.”
@@ -1448,13 +1426,6 @@ export const App: React.FC = () => {
                 >
                   <FileText className="w-3.5 h-3.5" />
                   <span>Syllabus & PYQ</span>
-                </button>
-                <button
-                  onClick={() => setIsPitchModalOpen(true)}
-                  className="text-amber-700 hover:text-amber-900 flex items-center gap-1 font-semibold cursor-pointer"
-                >
-                  <Award className="w-3.5 h-3.5" />
-                  <span>Pitch Kit</span>
                 </button>
               </div>
             </div>
@@ -1479,12 +1450,6 @@ export const App: React.FC = () => {
         onClose={() => setIsAiTutorOpen(false)}
         conceptName={aiTutorTopic}
         initialMisconception={aiTutorMisconception}
-      />
-
-      {/* 3-Minute Hackathon Judge Pitch Kit */}
-      <HackathonPitchModal
-        isOpen={isPitchModalOpen}
-        onClose={() => setIsPitchModalOpen(false)}
       />
 
       {/* Course / Subject Selection Modal */}

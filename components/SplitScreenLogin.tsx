@@ -185,7 +185,7 @@ export const SplitScreenLogin: React.FC<SplitScreenLoginProps> = ({
               <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
               Bayesian Knowledge Traced
             </span>
-            <span>v2.4 Hackathon Build</span>
+            <span>v2.4 Production</span>
           </div>
         </div>
 
@@ -293,15 +293,15 @@ export const SplitScreenLogin: React.FC<SplitScreenLoginProps> = ({
               </button>
             </div>
 
-            {/* 1-CLICK HACKATHON DEMO PERSONAS SECTION */}
+            {/* QUICK STUDENT PERSONAS SECTION */}
             <div className="pt-4 border-t border-stone-100 space-y-3">
               <div className="flex items-center justify-between">
                 <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider flex items-center gap-1.5">
                   <Sparkles className="w-3.5 h-3.5 text-cyan-600" />
-                  Hackathon 1-Click Persona Access
+                  Quick Student Profile Access
                 </span>
                 <span className="text-[10px] font-mono text-emerald-600 font-bold bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
-                  Instant Demo
+                  Fast Login
                 </span>
               </div>
 

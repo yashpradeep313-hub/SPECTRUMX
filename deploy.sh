@@ -29,7 +29,7 @@ echo "  ___) | |_) |  __/ (__| |_| |  | |_| | | | | | |/  \  "
 echo " |____/| .__/ \___|\___|\__|_|   \__,_|_| |_| |_/_/\_\ "
 echo "       |_|                                             "
 echo -e "${NC}"
-echo -e "${PURPLE}=== SpectrumX Dynamic GitHub Deployment Engine ===${NC}"
+echo -e "${PURPLE}=== Spectrum X Dynamic GitHub Deployment Engine ===${NC}"
 echo ""
 
 # Default parameters

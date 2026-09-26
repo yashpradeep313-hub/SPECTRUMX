@@ -22,15 +22,12 @@ import {
   ChevronRight,
   Play,
   RotateCcw,
-  Server,
   Trash2,
   ChevronDown,
   ChevronUp,
   Download,
   Check,
-  Database,
   Cpu,
-  ShieldCheck,
   BookMarked,
   FolderPlus,
   Zap,
@@ -153,10 +150,6 @@ export const SyllabusPyqView: React.FC<SyllabusPyqViewProps> = ({
     questions: any[];
     aiTierUsed: string;
   } | null>(null);
-
-  // Architecture & Database Guidance Modal Toggle
-  const [showDatabaseGuide, setShowDatabaseGuide] = useState(false);
-  const [showAiBackupGuide, setShowAiBackupGuide] = useState(false);
 
   // Helper: Build DAG ConceptNodes from syllabus chapters
   const buildConceptNodesFromChapters = (chList: ChapterCheckItem[], title: string) => {
@@ -536,67 +529,6 @@ export const SyllabusPyqView: React.FC<SyllabusPyqViewProps> = ({
 
   return (
     <div className="space-y-8 animate-in fade-in duration-300">
-      {/* Backend Connection Indicator Bar with Database & AI Backup Links */}
-      <div className="bg-slate-900 border border-slate-800 rounded-2xl p-4 sm:p-5 shadow-sm text-white flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-        <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-indigo-500/20 border border-indigo-500/40 flex items-center justify-center shrink-0">
-            <Server className="w-5 h-5 text-indigo-400" />
-          </div>
-          <div>
-            <div className="flex items-center gap-2">
-              <span className="text-sm font-bold text-slate-100 font-serif">
-                SpectrumX Full-Stack Backend
-              </span>
-              <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-500/20 border border-emerald-500/40 text-[10px] font-mono text-emerald-300">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-                Port 3000 Active
-              </span>
-              <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-cyan-500/20 border border-cyan-500/40 text-[10px] font-mono text-cyan-300">
-                Gemini 3.8 Flash Ready
-              </span>
-              <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-amber-500/20 border border-amber-500/40 text-[10px] font-mono text-amber-300">
-                🔥 Firestore Database Active
-              </span>
-            </div>
-            <p className="text-xs text-slate-400 mt-0.5">
-              Active Domain: <strong className="text-white">{studentDomainName}</strong> • {pyqs.length} PYQ Papers Loaded
-            </p>
-          </div>
-        </div>
-
-        <div className="flex flex-wrap items-center gap-2.5 shrink-0">
-          {/* Database Guide Trigger */}
-          <button
-            onClick={() => setShowDatabaseGuide(true)}
-            className="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-300 text-xs font-semibold flex items-center gap-1.5 transition-colors cursor-pointer"
-            title="Database Architecture Guidance"
-          >
-            <Database className="w-3.5 h-3.5 text-cyan-400" />
-            <span>Which DB to Use?</span>
-          </button>
-
-          {/* Backup AI Call Strategy Trigger */}
-          <button
-            onClick={() => setShowAiBackupGuide(true)}
-            className="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-300 text-xs font-semibold flex items-center gap-1.5 transition-colors cursor-pointer"
-            title="Backup AI Architecture Details"
-          >
-            <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
-            <span>Backup AI Calls</span>
-          </button>
-
-          {onStartInitialTest && (
-            <button
-              onClick={() => onStartInitialTest(syllabusName, syllabusQuestions)}
-              className="px-4 py-1.5 bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white rounded-xl text-xs font-bold transition-all shadow-sm flex items-center gap-2 cursor-pointer"
-            >
-              <Brain className="w-4 h-4 text-white" />
-              <span>Take Level Test</span>
-            </button>
-          )}
-        </div>
-      </div>
-
       {/* FEATURE 1: Student Subject / Course Domain Name Creator */}
       <div className="bg-gradient-to-br from-indigo-50/80 via-white to-cyan-50/60 border border-indigo-200/90 rounded-2xl p-6 shadow-sm space-y-4">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-indigo-100">
@@ -1110,159 +1042,6 @@ export const SyllabusPyqView: React.FC<SyllabusPyqViewProps> = ({
           </div>
         </div>
       </div>
-
-      {/* =========================================================
-          MODAL 1: WHICH DATABASE SHOULD YOU USE?
-          ========================================================= */}
-      {showDatabaseGuide && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 backdrop-blur-xs p-4 animate-in fade-in">
-          <div className="bg-white border border-stone-200 rounded-2xl max-w-2xl w-full p-6 sm:p-8 space-y-5 shadow-2xl max-h-[90vh] overflow-y-auto">
-            <div className="flex items-center justify-between pb-3 border-b border-stone-200">
-              <div className="flex items-center gap-2.5">
-                <div className="w-8 h-8 rounded-xl bg-cyan-100 text-cyan-800 flex items-center justify-center font-bold">
-                  <Database className="w-4 h-4" />
-                </div>
-                <div>
-                  <h3 className="text-base font-bold text-slate-900 font-serif">
-                    Database Recommendation for Synapse
-                  </h3>
-                  <span className="text-[11px] text-slate-500">Architectural analysis: Firestore vs Cloud SQL PostgreSQL</span>
-                </div>
-              </div>
-
-              <button
-                onClick={() => setShowDatabaseGuide(false)}
-                className="p-1.5 rounded-lg text-slate-400 hover:text-slate-600 hover:bg-stone-100 cursor-pointer"
-              >
-                ✕
-              </button>
-            </div>
-
-            <div className="space-y-4 text-xs">
-              {/* Option A: Firebase Firestore (Recommended) */}
-              <div className="p-4 rounded-xl bg-emerald-50/70 border-2 border-emerald-500/80 space-y-2">
-                <div className="flex items-center justify-between">
-                  <span className="font-bold text-emerald-950 text-sm flex items-center gap-1.5">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-600" />
-                    Option 1: Firebase Firestore (Recommended for this App)
-                  </span>
-                  <span className="px-2 py-0.5 rounded-full bg-emerald-200/80 text-emerald-900 text-[10px] font-bold">
-                    Best Match
-                  </span>
-                </div>
-                <p className="text-emerald-900 leading-relaxed">
-                  <strong>Why it fits:</strong> Synapse deals with hierarchical documents (uploaded syllabi with nested chapters, PYQ question lists, BKT probability vectors, and dynamic question banks). Firestore's JSON document model matches our data shape natively without relational impedance mismatch.
-                </p>
-                <div className="text-[11px] text-emerald-800 space-y-1 font-mono bg-white/70 p-2.5 rounded-lg border border-emerald-200">
-                  <div>• <code>users/{'{userId}'}</code>: Profile, IRT theta, level badge</div>
-                  <div>• <code>courses/{'{courseId}'}</code>: Chapters, weightages, DAG nodes</div>
-                  <div>• <code>pyqs/{'{paperId}'}</code>: Marking schemes, question breakdown</div>
-                  <div>• Real-time updates with <code>onSnapshot()</code> for live classroom desks</div>
-                </div>
-              </div>
-
-              {/* Option B: Cloud SQL PostgreSQL */}
-              <div className="p-4 rounded-xl bg-stone-50 border border-stone-200 space-y-2">
-                <div className="flex items-center justify-between">
-                  <span className="font-bold text-slate-900 text-sm flex items-center gap-1.5">
-                    <Database className="w-4 h-4 text-slate-600" />
-                    Option 2: Cloud SQL (PostgreSQL with Drizzle ORM)
-                  </span>
-                  <span className="px-2 py-0.5 rounded-full bg-stone-200 text-slate-700 text-[10px] font-bold">
-                    Enterprise Relational
-                  </span>
-                </div>
-                <p className="text-slate-700 leading-relaxed">
-                  <strong>When to choose:</strong> If your institution requires strict ACID transactions across thousands of students concurrently, complex SQL aggregations for university accreditation reports, or foreign key referential integrity between departments.
-                </p>
-              </div>
-            </div>
-
-            <div className="pt-2 flex justify-end">
-              <button
-                onClick={() => setShowDatabaseGuide(false)}
-                className="px-4 py-2 bg-slate-900 hover:bg-slate-800 text-white rounded-xl text-xs font-bold cursor-pointer"
-              >
-                Close Guide
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* =========================================================
-          MODAL 2: BACKUP AI CALLS ARCHITECTURE
-          ========================================================= */}
-      {showAiBackupGuide && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 backdrop-blur-xs p-4 animate-in fade-in">
-          <div className="bg-white border border-stone-200 rounded-2xl max-w-2xl w-full p-6 sm:p-8 space-y-5 shadow-2xl max-h-[90vh] overflow-y-auto">
-            <div className="flex items-center justify-between pb-3 border-b border-stone-200">
-              <div className="flex items-center gap-2.5">
-                <div className="w-8 h-8 rounded-xl bg-indigo-100 text-indigo-800 flex items-center justify-center font-bold">
-                  <ShieldCheck className="w-4 h-4" />
-                </div>
-                <div>
-                  <h3 className="text-base font-bold text-slate-900 font-serif">
-                    3-Tier Backup AI Architecture
-                  </h3>
-                  <span className="text-[11px] text-slate-500">How Synapse guarantees 100% quiz generation uptime</span>
-                </div>
-              </div>
-
-              <button
-                onClick={() => setShowAiBackupGuide(false)}
-                className="p-1.5 rounded-lg text-slate-400 hover:text-slate-600 hover:bg-stone-100 cursor-pointer"
-              >
-                ✕
-              </button>
-            </div>
-
-            <div className="space-y-3.5 text-xs">
-              {/* Tier 1 */}
-              <div className="p-3.5 rounded-xl bg-indigo-50/70 border border-indigo-200 space-y-1">
-                <div className="flex items-center justify-between">
-                  <span className="font-bold text-indigo-950 text-xs">Tier 1: Gemini 3.8 Flash Multimodal (Primary)</span>
-                  <span className="px-2 py-0.5 rounded-full bg-indigo-200 text-indigo-900 font-mono text-[10px] font-bold">Primary Call</span>
-                </div>
-                <p className="text-indigo-900 leading-relaxed text-[11px]">
-                  Directly sends the raw PDF binary as base64 <code>inlineData</code> to <code>gemini-3.8-flash</code>. Extracts diagrams, formulas, tables, and full chapter weightage vectors with deep cognitive reasoning.
-                </p>
-              </div>
-
-              {/* Tier 2 */}
-              <div className="p-3.5 rounded-xl bg-cyan-50/70 border border-cyan-200 space-y-1">
-                <div className="flex items-center justify-between">
-                  <span className="font-bold text-cyan-950 text-xs">Tier 2: Compact Text-Chunked Gemini Call (Secondary)</span>
-                  <span className="px-2 py-0.5 rounded-full bg-cyan-200 text-cyan-900 font-mono text-[10px] font-bold">Fallback 1</span>
-                </div>
-                <p className="text-cyan-900 leading-relaxed text-[11px]">
-                  If raw PDF binary fails or times out, the backend extracts the ASCII text streams and invokes a lightweight prompt requesting essential MCQs, reducing token payloads by 80%.
-                </p>
-              </div>
-
-              {/* Tier 3 */}
-              <div className="p-3.5 rounded-xl bg-emerald-50/70 border border-emerald-200 space-y-1">
-                <div className="flex items-center justify-between">
-                  <span className="font-bold text-emerald-950 text-xs">Tier 3: Deterministic Rule-Based Engine (Tertiary)</span>
-                  <span className="px-2 py-0.5 rounded-full bg-emerald-200 text-emerald-900 font-mono text-[10px] font-bold">Fallback 2 (Offline)</span>
-                </div>
-                <p className="text-emerald-900 leading-relaxed text-[11px]">
-                  If the API key is missing or network is offline, a deterministic pedagogical algorithm synthesizes questions directly from the syllabus chapter weightages and PYQ traps. The app <strong>never crashes</strong> or throws an unhandled 500 error.
-                </p>
-              </div>
-            </div>
-
-            <div className="pt-2 flex justify-end">
-              <button
-                onClick={() => setShowAiBackupGuide(false)}
-                className="px-4 py-2 bg-slate-900 hover:bg-slate-800 text-white rounded-xl text-xs font-bold cursor-pointer"
-              >
-                Got It
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 };
