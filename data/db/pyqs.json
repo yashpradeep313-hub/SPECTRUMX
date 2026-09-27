@@ -1,0 +1,56 @@
+[
+  {
+    "id": "pyq-2025",
+    "fileName": "Previous_Year_Question_Paper_2025_Marking_Scheme.pdf",
+    "fileSizeBytes": 310000,
+    "uploadedAt": "2026-09-26T06:08:46.418Z",
+    "examTitle": "Annual University Python Final Examination 2025",
+    "year": "2025",
+    "totalMarks": 100,
+    "markingScheme": "+4 for algorithm correctness, -1 for boundary/stack overflow errors, step-marking enabled for partial proof",
+    "highWeightageTopics": [
+      "Recursion Call Stacks (25M)",
+      "Functions & Scope (20M)",
+      "Loop Invariants (15M)"
+    ],
+    "questions": [
+      {
+        "qNum": "Q1",
+        "topic": "Variables & Mutable Assignment",
+        "marks": 5,
+        "difficulty": "Easy",
+        "questionText": "Demonstrate list aliasing with memory diagrams when assigning list b to list a.",
+        "markingCriteria": "2 marks for memory diagram showing single heap object, 3 marks for code explanation.",
+        "commonTraps": "Confusing deep copy with shallow reference assignment."
+      },
+      {
+        "qNum": "Q2",
+        "topic": "Loop Bounds & range()",
+        "marks": 10,
+        "difficulty": "Medium",
+        "questionText": "Implement a binary search loop with strict boundary interval invariants.",
+        "markingCriteria": "5 marks for loop termination condition (low <= high), 5 marks for mid calculation.",
+        "commonTraps": "Integer overflow in mid calculation, off-by-one in mid - 1."
+      },
+      {
+        "qNum": "Q3b",
+        "topic": "Function Return Values",
+        "marks": 15,
+        "difficulty": "Medium",
+        "questionText": "Explain why passing the output of a function that uses print() to another calculation causes TypeError.",
+        "markingCriteria": "7 marks for explaining NoneType return value, 8 marks for code trace.",
+        "commonTraps": "Assuming print() assigns value to result variable."
+      },
+      {
+        "qNum": "Q4",
+        "topic": "Tree Recursion & Call Stacks",
+        "marks": 20,
+        "difficulty": "Hard",
+        "questionText": "Trace the activation records for recursive merge sort on array of size 8.",
+        "markingCriteria": "10 marks for call tree diagram, 10 marks for stack frame base cases.",
+        "commonTraps": "Omitting base case when left index >= right index."
+      }
+    ],
+    "isAiParsed": true
+  }
+]

@@ -1,0 +1,53 @@
+[
+  {
+    "id": "user-alex",
+    "name": "Alex Chen",
+    "email": "alex.chen@adaptive.edu",
+    "avatar": "👨‍💻",
+    "role": "Student",
+    "enrolledCourseIds": [
+      "python-core",
+      "dsa-python"
+    ],
+    "currentGoal": "Master Python Internals & FAANG Technical Interviews",
+    "level": "Intermediate",
+    "streakDays": 14,
+    "totalStudyMinutes": 340,
+    "learningVelocity": "Accelerated",
+    "joinedDate": "September 2026"
+  },
+  {
+    "id": "user-maya",
+    "name": "Maya Patel",
+    "email": "maya.patel@techacademy.io",
+    "avatar": "👩‍🔬",
+    "role": "Student",
+    "enrolledCourseIds": [
+      "python-core",
+      "deep-learning-math"
+    ],
+    "currentGoal": "Neural Network Math Foundations & Backpropagation",
+    "level": "Advanced",
+    "streakDays": 21,
+    "totalStudyMinutes": 520,
+    "learningVelocity": "Accelerated",
+    "joinedDate": "August 2026"
+  },
+  {
+    "id": "user-liam",
+    "name": "Liam Wright",
+    "email": "liam.wright@devbootcamp.com",
+    "avatar": "🌱",
+    "role": "Student",
+    "enrolledCourseIds": [
+      "python-core",
+      "fullstack-web"
+    ],
+    "currentGoal": "Overcome Recursion & Mutable Default Blindspots",
+    "level": "Beginner",
+    "streakDays": 5,
+    "totalStudyMinutes": 120,
+    "learningVelocity": "Steady",
+    "joinedDate": "September 2026"
+  }
+]

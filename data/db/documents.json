@@ -1,0 +1,87 @@
+[
+  {
+    "id": "doc-1790489356775",
+    "fileName": "TestNotes.txt",
+    "fileType": "text/plain",
+    "fileSizeBytes": 29,
+    "scannedAt": "2026-09-27T06:09:16.775Z",
+    "title": "Analysis of TestNotes",
+    "summary": "This document explores TestNotes. Key points emphasize structural composition, procedural workflows, and dependency constraints.",
+    "keyTakeaways": [
+      "Foundational axioms governing TestNotes",
+      "Prerequisite dependencies required before advancing to synthesis",
+      "Boundary conditions and edge-case exceptions",
+      "Operational mental model for recall and technical application"
+    ],
+    "extractedConcepts": [
+      {
+        "id": "doc-concept-1",
+        "name": "TestNotes Fundamentals",
+        "description": "Core definitions, baseline notations, and initial framing principles.",
+        "prerequisites": [],
+        "difficulty": "Foundational"
+      },
+      {
+        "id": "doc-concept-2",
+        "name": "Invariants & State Transitions",
+        "description": "Operational rules that hold true throughout program execution or theoretical proofs.",
+        "prerequisites": [
+          "doc-concept-1"
+        ],
+        "difficulty": "Intermediate"
+      },
+      {
+        "id": "doc-concept-3",
+        "name": "Synthesis & Edge-Case Evaluation",
+        "description": "Applying concepts to complex non-trivial scenarios with multiple constraints.",
+        "prerequisites": [
+          "doc-concept-2"
+        ],
+        "difficulty": "Advanced"
+      }
+    ],
+    "diagnosedMisconceptions": [
+      {
+        "topic": "TestNotes Fundamentals",
+        "misconception": "Conflating initial state declaration with runtime dynamic updates",
+        "remedy": "Track state mutations sequentially across time steps rather than assuming static values."
+      },
+      {
+        "topic": "Invariants & State Transitions",
+        "misconception": "Ignoring boundary edge cases (off-by-one, null references, or empty collections)",
+        "remedy": "Always test zero-case, single-element, and maximum bounds before generalizing."
+      }
+    ],
+    "generatedQuestions": [
+      {
+        "id": "q-doc-1",
+        "conceptName": "TestNotes Fundamentals",
+        "title": "Document Concept Check: TestNotes",
+        "questionText": "Based on the scanned material in \"TestNotes.txt\", what is the primary invariant that guarantees predictable execution?",
+        "options": [
+          {
+            "text": "Prerequisite dependencies must be resolved prior to state transformation",
+            "pedagogicalNote": "Correct. Invariants require that foundational dependencies are evaluated first."
+          },
+          {
+            "text": "State updates occur concurrently without synchronization",
+            "misconceptionLabel": "Unsynchronized Race Condition Assumption",
+            "pedagogicalNote": "Incorrect. The document specifies sequential deterministic transitions."
+          },
+          {
+            "text": "Output is always discarded rather than returned to callers",
+            "misconceptionLabel": "Ignoring Return Value Contract",
+            "pedagogicalNote": "Incorrect. Return contracts must hand results explicitly to downstream consumers."
+          },
+          {
+            "text": "Default arguments are re-instantiated on every single invocation",
+            "misconceptionLabel": "Mutable Default Argument Illusion",
+            "pedagogicalNote": "Incorrect. Static defaults retain mutated state across invocations."
+          }
+        ],
+        "correctIndex": 0,
+        "correctExplanation": "As demonstrated in the document, prerequisite foundations must be satisfied before invoking downstream synthesis operations."
+      }
+    ]
+  }
+]

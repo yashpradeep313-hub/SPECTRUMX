@@ -149,8 +149,7 @@ export interface DocumentAnalysisResult {
 
 /**
  * Multimodal Document Scanner:
- * Supports PDF documents, text/code files (.txt, .md, .py), and images (.jpg, .png, .webp).
- * Extracts cognitive knowledge prerequisites, key takeaways, and adaptive quiz questions.
+ * First tries backend /api/documents/analyze, with client-side fallback.
  */
 export const analyzeDocumentWithAI = async (fileInfo: {
   fileName: string;
@@ -158,13 +157,30 @@ export const analyzeDocumentWithAI = async (fileInfo: {
   base64Data?: string;
   textContent?: string;
 }): Promise<DocumentAnalysisResult> => {
+  // Call backend API
+  try {
+    const res = await fetch('/api/documents/analyze', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(fileInfo),
+    });
+    if (res.ok) {
+      const data = await res.json();
+      if (data.success && data.document) {
+        return data.document;
+      }
+    }
+  } catch (backendErr) {
+    console.warn('[GeminiService] Backend /api/documents/analyze call note:', backendErr);
+  }
+
+  // Fallback to client-side Gemini if valid key exists
   const isImage = fileInfo.fileType.startsWith('image/');
   const isPdf = fileInfo.fileType === 'application/pdf';
 
   if (hasValidGeminiKey()) {
     try {
       const ai = getGenAI();
-
       const prompt = `You are Synapse AI Document Intelligence Engine.
 Analyze this academic/educational document (${fileInfo.fileName}) to turn it into an adaptive learning graph.
 
@@ -179,7 +195,7 @@ Return a STRICT, valid JSON object (no markdown quotes outside JSON if possible,
       "name": "Concept Name",
       "description": "Definition and role in the system",
       "prerequisites": ["prior-concept-id-if-any"],
-      "difficulty": "Foundational" | "Intermediate" | "Advanced"
+      "difficulty": "Foundational"
     }
   ],
   "diagnosedMisconceptions": [
@@ -243,7 +259,7 @@ Provide 3-5 extracted concepts and 2-3 generated questions directly grounded in 
     }
   }
 
-  // Intelligent local fallback if API key isn't provided or network drops
+  // Intelligent local fallback
   const cleanName = fileInfo.fileName.replace(/\.[^/.]+$/, "").replace(/[-_]/g, ' ');
   const textSnippet = fileInfo.textContent ? fileInfo.textContent.slice(0, 300) : '';
 
@@ -339,6 +355,24 @@ export const askDocumentQuestionWithAI = async (params: {
   documentSummary: string;
   question: string;
 }): Promise<string> => {
+  // Call backend API
+  try {
+    const res = await fetch('/api/documents/qa', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(params),
+    });
+    if (res.ok) {
+      const data = await res.json();
+      if (data.success && data.answer) {
+        return data.answer;
+      }
+    }
+  } catch (backendErr) {
+    console.warn('[GeminiService] Backend /api/documents/qa note:', backendErr);
+  }
+
+  // Fallback to client-side Gemini if valid key exists
   const isImage = params.fileType.startsWith('image/');
   const isPdf = params.fileType === 'application/pdf';
 
@@ -390,8 +424,24 @@ INSTRUCTIONS:
   return `Based on "${params.fileName}", the document establishes that core principles must be understood hierarchically. Regarding "${params.question}": Notice how the material distinguishes between definition and execution. Key recommendation: verify foundational prerequisites before testing edge cases.`;
 };
 
+/**
+ * Generate Custom Curriculum for ANY topic via backend AI
+ */
 export const generateCustomCurriculumAI = async (topic: string): Promise<any | null> => {
+  try {
+    const res = await fetch('/api/generate-curriculum', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ topic }),
+    });
+    if (res.ok) {
+      const data = await res.json();
+      if (data.success && data.curriculum) {
+        return data.curriculum;
+      }
+    }
+  } catch (err) {
+    console.warn('[GeminiService] Backend /api/generate-curriculum call failed:', err);
+  }
   return null;
 };
-
-
